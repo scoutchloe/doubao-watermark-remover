@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>豆包水印去除测试</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .image-container {
+      margin: 30px 0;
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+    h1 {
+      color: #4285f4;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+      margin: 10px 0;
+    }
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>豆包水印去除测试</h1>
+  
+  <p>此页面包含带有水印的豆包图片，用于测试扩展程序。如果扩展程序正常工作，这些图片应该显示时不带水印。</p>
+  
+  <div class="image-container">
+    <h2>测试图片 1 （豆包）</h2>
+    <img src="https://p9-flow-imagex-sign.byteimg.com/ocean-cloud-tos/image_skill/fc5f7e15-3525-459e-9d19-15fb807bec25_1748037248057097086_origin~tplv-a9rns2rl98-image-dark-watermark.png?rk3s=b14c611d&amp;x-expires=1779573248&amp;x-signature=5RR4qtfKSKR4kFxlqWkXghEwcz0%3D" alt="测试图片 1">
+    <p>原始URL:</p>
+    <pre>https://p9-flow-imagex-sign.byteimg.com/ocean-cloud-tos/image_skill/fc5f7e15-3525-459e-9d19-15fb807bec25_1748037248057097086_origin~tplv-a9rns2rl98-image-dark-watermark.png?rk3s=b14c611d&amp;x-expires=1779573248&amp;x-signature=5RR4qtfKSKR4kFxlqWkXghEwcz0%3D</pre>
+  </div>
+  
+  <script>
+    // 模拟doubao.com环境
+    Object.defineProperty(window, 'location', {
+      value: {
+        hostname: 'www.doubao.com',
+        href: 'https://www.doubao.com/chat/123456789'
+      },
+      writable: true
+    });
+    
+    // 等页面加载完成，检查扩展是否工作
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        // 检查浮动按钮是否显示
+        const button = document.getElementById('watermark-remover-button');
+        const buttonStatus = button ? '已找到' : '未找到';
+        
+        // 在控制台输出结果
+        console.log('浮动按钮: ' + buttonStatus);
+        
+        // 检查图片是否被处理
+        const images = document.querySelectorAll('img');
+        let modifiedImages = 0;
+        
+        images.forEach(img => {
+          if (!img.src.includes('-watermark')) {
+            modifiedImages++;
+          }
+        });
+        
+        console.log('处理的图片数量: ' + modifiedImages);
+      }, 1000);
+    });
+  </script>
+</body>
+</html> 

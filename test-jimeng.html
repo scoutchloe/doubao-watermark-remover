@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>即梦水印去除测试</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .image-container {
+      margin: 30px 0;
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+    h1 {
+      color: #4285f4;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+      margin: 10px 0;
+    }
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>即梦水印去除测试</h1>
+  
+  <p>此页面包含带有水印的即梦图片，用于测试扩展程序。如果扩展程序正常工作，这些图片应该显示时不带水印。</p>
+  
+  <div class="image-container">
+    <h2>测试图片 1 （即梦 jianying.com）</h2>
+    <img src="https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/62d23bf9cc6f4c7b8a7c5295194698a2~tplv-tb4s082cfz-aigc_resize_loss:480:480.webp?lk3s=43402efa&amp;x-expires=1749600000&amp;x-signature=H5usVa7lv1t0Rqbv0BMeIalZ7LI%3D&amp;format=.webp" alt="测试图片 1">
+    <p>原始URL:</p>
+    <pre>https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/62d23bf9cc6f4c7b8a7c5295194698a2~tplv-tb4s082cfz-aigc_resize_loss:480:480.webp?lk3s=43402efa&amp;x-expires=1749600000&amp;x-signature=H5usVa7lv1t0Rqbv0BMeIalZ7LI%3D&amp;format=.webp</pre>
+  </div>
+  
+  <div class="image-container">
+    <h2>测试图片 2 （即梦背景图片）</h2>
+    <div style="height: 300px; background-image: url('https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/62d23bf9cc6f4c7b8a7c5295194698a2~tplv-tb4s082cfz-aigc_resize_loss:480:480.webp?lk3s=43402efa&amp;x-expires=1749600000&amp;x-signature=H5usVa7lv1t0Rqbv0BMeIalZ7LI%3D&amp;format=.webp'); background-size: cover; background-position: center;"></div>
+  </div>
+  
+  <script>
+    // 模拟jianying.com环境
+    Object.defineProperty(window, 'location', {
+      value: {
+        hostname: 'jimeng.jianying.com',
+        href: 'https://jimeng.jianying.com/ai-tool/image/generate'
+      },
+      writable: true
+    });
+    
+    // 等页面加载完成，检查扩展是否工作
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        // 检查浮动按钮是否显示
+        const button = document.getElementById('watermark-remover-button');
+        const buttonStatus = button ? '已找到' : '未找到';
+        
+        // 在控制台输出结果
+        console.log('浮动按钮: ' + buttonStatus);
+        
+        // 检查图片是否被处理
+        const images = document.querySelectorAll('img');
+        let modifiedImages = 0;
+        
+        images.forEach(img => {
+          if (!img.src.includes('tplv-')) {
+            modifiedImages++;
+          }
+        });
+        
+        console.log('处理的图片数量: ' + modifiedImages);
+      }, 1000);
+    });
+  </script>
+</body>
+</html> 

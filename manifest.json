@@ -1,0 +1,54 @@
+{
+  "manifest_version": 3,
+  "name": "豆包/即梦/字节图片水印去除和下载工具",
+  "version": "1.2",
+  "description": "去除豆包(doubao.com)、即梦(jimeng.ai/jianying.com)和字节跳动图片上的水印，并支持直接下载",
+  "permissions": [
+    "webRequest", 
+    "declarativeNetRequest", 
+    "tabs", 
+    "scripting", 
+    "downloads",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*.byteimg.com/*",
+    "*://*.bytedance.com/*",
+    "*://*.doubao.com/*",
+    "*://*.jimeng.ai/*",
+    "*://*.jianying.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content-script.js"],
+      "css": ["content-style.css"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["images/*.png", "images/*.svg"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; img-src * data:"
+  }
+} 

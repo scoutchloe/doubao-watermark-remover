@@ -1,0 +1,108 @@
+/* 水印去除器按钮样式 */
+.watermark-remover-button {
+  position: fixed !important;
+  /* 移除默认位置，允许位置由JavaScript动态控制 */
+  /* top: 20px !important; */
+  left: auto !important;
+  right: 20px !important; /* 固定在屏幕右侧边缘 */
+  background-color: #4285f4 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 50% !important;
+  width: 44px !important;
+  height: 44px !important;
+  padding: 0 !important;
+  font-size: 14px !important;
+  cursor: ns-resize !important; /* 明确设置为上下拖动光标 */
+  z-index: 9999999 !important; /* 确保在最顶层 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: background-color 0.3s ease, width 0.3s ease, border-radius 0.3s ease, padding 0.3s ease !important; /* 添加所有过渡效果 */
+  opacity: 0.9 !important;
+  user-select: none !important;
+  touch-action: pan-y !important; /* 允许垂直平移触摸操作 */
+  will-change: top, width, border-radius !important; /* 优化动画性能 */
+}
+
+/* 悬浮时扩展按钮区域 */
+.watermark-remover-button:hover {
+  width: auto !important;
+  min-width: 44px !important; /* 确保最小宽度 */
+  padding: 0 16px !important;
+  border-radius: 22px !important;
+  background-color: #3367d6 !important;
+}
+
+/* 添加点击样式 */
+.watermark-remover-button:active {
+  background-color: #2a56c2 !important;
+}
+
+.watermark-remover-button .icon {
+  display: inline-block !important;
+  width: 24px !important;
+  height: 24px !important;
+  background-color: white !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%234285f4' d='M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z'/%3E%3C/svg%3E") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  margin: 0 !important;
+  flex-shrink: 0 !important;
+  pointer-events: none !important; /* 确保图标不会阻止点击事件 */
+}
+
+/* 确保悬浮时图标也能被点击 */
+.watermark-remover-button:hover .icon {
+  margin-right: 8px !important;
+  pointer-events: none !important;
+}
+
+/* 确保文字不会阻止点击事件 */
+.watermark-remover-button .text {
+  display: none !important;
+  white-space: nowrap !important;
+  pointer-events: none !important;
+}
+
+.watermark-remover-button:hover .text {
+  display: inline-block !important;
+}
+
+/* 状态提示样式 */
+.watermark-remover-status {
+  position: fixed !important;
+  top: 70px !important;
+  right: 20px !important;
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  color: white !important;
+  padding: 8px 12px !important;
+  border-radius: 4px !important;
+  font-size: 14px !important;
+  z-index: 2147483646 !important;
+  opacity: 0 !important;
+  transition: opacity 0.3s ease !important;
+  pointer-events: none !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+.watermark-remover-status.show {
+  opacity: 1 !important;
+}
+
+/* 可选择图片样式 */
+.selectable-image {
+  transition: outline 0.2s ease !important;
+}
+
+.selectable-image:hover {
+  cursor: pointer !important;
+  outline: 2px dashed #4285f4 !important;
+}
+
+/* 已选中图片样式 */
+.selectable-image.selected {
+  outline: 3px solid #4285f4 !important;
+} 
