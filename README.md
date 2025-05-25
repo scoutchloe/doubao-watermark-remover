@@ -56,7 +56,7 @@
 
 1. 下载或克隆此仓库
 ```bash
-git clone https://github.com/your-username/watermark-remover-extension.git
+git clone https://github.com/scoutchloe/doubao-watermark-remover.git
 ```
 
 2. 打开Chrome，访问 `chrome://extensions/`

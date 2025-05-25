@@ -56,7 +56,7 @@ This extension uses multiple methods to remove watermarks and download images:
 
 1. Download or clone this repository
 ```bash
-git clone https://github.com/your-username/watermark-remover-extension.git
+git clone https://github.com/scoutchloe/doubao-watermark-remover.git
 ```
 
 2. Open Chrome and navigate to `chrome://extensions/`
